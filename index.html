@@ -12,6 +12,10 @@
 <body>
     <h1>notebooki</h1>
     <div id="cont-vue">
+        <div class="search">
+            
+            <input v-on:keypress.enter="Shukay" v-model="searchStr" type="text" placeholder="poshyk" id="inp-search">
+        </div>
         <div class="cc">
             <ul class="menu">
                 <li v-for='(elem, n) in nameNote' v-on:click="clike(n)" v-bind:class="{selected : num == n}">{{elem}}

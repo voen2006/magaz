@@ -24,6 +24,7 @@ let notebook = {
             capybara: [],
             isHover: false,
             hoverNum: -1,
+            searchStr: ' ',
         }
     },
     methods: {
@@ -36,8 +37,27 @@ let notebook = {
                     this.capybara.push(item)
                 }
             }
-        }
+        },
+        Shukay() {
+            let s = this.searchStr
+            if (!s) {
+                return this.capybara
+            }
+            s = s.trim().toLowerCase();
+            this.capybara.length = 0;
 
+            return this.allData.filter(item => {
+                if ((item.name.toLowerCase().indexOf(s) !== -1) ||
+                    (item.model.toLowerCase().indexOf(s) !== -1) ||
+                    (item.CPU.toLowerCase().indexOf(s) !== -1) ||
+                    (item.storage.toLowerCase().indexOf(s) !== -1)){
+                    this.capybara.push(item);
+                    return this.capybara;
+                }
+            })
+
+
+        }
     },
     mounted() {
         this.clike(0)

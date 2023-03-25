@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>notebooki</h1>
+    <div id="cont-vue">
+        <div class="cc">
+            <ul class="menu">
+                <li v-for='(elem, n) in nameNote' v-on:click="clike(n)" v-bind:class="{selected : num == n}">{{elem}}
+                </li>
+            </ul>
+            <div class="content">
+                <h2>{{nazva}}</h2>
+                <div class="card-wrap">
+                    <div class="no-info" v-if="capybara.length == 0">
+                        <p>nety infi ska</p>
+                    </div>
+                    <div class="card" v-for="(item, i) in capybara"
+                    v-on:mouseleave="isHover = false"
+                    v-on:mouseenter="{isHover = true; hoverNum = i}"
+
+                    >
+                        <div class="hide-div" v-if="isHover == true && hoverNum == i">
+                            <p>price {{item.price}}</p>
+                        </div>
+                        <p>CPU {{item.CPU}}</p>
+                        <p>model {{item.model}}</p>
+                        <p>storage {{item.storage}}</p>
+                        <p>price {{item.price}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="java.js"></script>
+</body>
+
+</html>
